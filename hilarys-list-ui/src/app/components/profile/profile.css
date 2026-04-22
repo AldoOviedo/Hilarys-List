@@ -1,0 +1,32 @@
+.profile-container {
+  max-width: 500px;
+}
+
+.profile-tag {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #4D6B4A;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.profile-name {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #2F4032;
+  margin: 0 0 12px 0;
+}
+
+.profile-detail {
+  font-size: 14px;
+  color: #6B7A6B;
+  margin: 0;
+}
+
+.profile-empty {
+  font-size: 14px;
+  color: #6B7A6B;
+}

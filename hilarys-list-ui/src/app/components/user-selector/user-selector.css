@@ -1,0 +1,37 @@
+.user-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(251, 246, 236, 0.5);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.user-dropdown {
+  background: rgba(251, 246, 236, 0.1);
+  border: 1px solid rgba(251, 246, 236, 0.2);
+  color: #FAF8F4;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.user-dropdown:hover {
+  border-color: #4D6B4A;
+}
+
+.user-dropdown option {
+  background: #2F4032;
+  color: #FAF8F4;
+}

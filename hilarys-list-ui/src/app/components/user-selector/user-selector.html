@@ -1,0 +1,8 @@
+<div class="user-switcher">
+  <label class="user-label">Browsing as</label>
+  <select class="user-dropdown" [(ngModel)]="selectedUserId" (change)="onUserChange()">
+    @for (user of users; track user.id) {
+      <option [value]="user.id">{{ user.displayName }}</option>
+    }
+  </select>
+</div>

@@ -1,0 +1,26 @@
+
+
+<div class="view-container">
+  <div class="view-header">
+    <span class="view-tag">Public · Curated</span>
+    <h2 class="view-title">Where she's been</h2>
+    <p class="view-subtitle">Hilary's personal guide to the best cafés around.</p>
+  </div>
+
+  @if (cafes.length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon">☕</span>
+      <p class="empty-title">The list begins here.</p>
+      <p class="empty-subtitle">Cafés Hilary adds to her public list will appear here.</p>
+    </div>
+  } @else {
+    <div class="cafe-grid">
+      @for (cafe of cafes; track cafe.id) {
+        <div class="cafe-card">
+          <h3 class="cafe-name">{{ cafe.name }}</h3>
+          <p class="cafe-location">{{ cafe.city }}, {{ cafe.state }}</p>
+        </div>
+      }
+    </div>
+  }
+</div>

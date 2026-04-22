@@ -1,0 +1,86 @@
+.view-container {
+  max-width: 900px;
+}
+
+.view-tag {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #4D6B4A;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.view-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 32px;
+  color: #2F4032;
+  margin: 0 0 6px 0;
+}
+
+.view-subtitle {
+  font-size: 14px;
+  color: #6B7A6B;
+  margin: 0 0 24px 0;
+}
+
+.cafe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.cafe-card {
+  background: #FAF8F4;
+  border: 1px solid rgba(77, 107, 74, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform 0.2s;
+}
+
+.cafe-card:hover {
+  transform: translateY(-2px);
+}
+
+.cafe-name {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #2F4032;
+  margin: 0 0 6px 0;
+}
+
+.cafe-location {
+  font-size: 13px;
+  color: #6B7A6B;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 40px;
+  border: 1px dashed rgba(77, 107, 74, 0.12);
+  border-radius: 16px;
+  background: #FAF8F4;
+}
+
+.empty-icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.empty-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: #2F4032;
+  margin: 0 0 8px 0;
+}
+
+.empty-subtitle {
+  font-size: 13px;
+  color: #6B7A6B;
+  margin: 0;
+}

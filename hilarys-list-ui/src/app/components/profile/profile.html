@@ -1,0 +1,9 @@
+<div class="profile-container">
+  @if (currentUser) {
+    <span class="profile-tag">Profile</span>
+    <h2 class="profile-name">{{ currentUser.displayName }}</h2>
+    <p class="profile-detail">User ID: {{ currentUser.id }}</p>
+  } @else {
+    <p class="profile-empty">No user selected</p>
+  }
+</div>

@@ -1,0 +1,65 @@
+<!-- Main App Layout -->
+<div class="app-container">
+
+  <!-- Top Navigation Bar -->
+  <header class="top-bar">
+    <button class="sidebar-toggle" (click)="toggleSidebar()" [class.open]="sidebarOpen">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+    <div class="logo-section">
+      <span class="logo-hearts">♥ ♥</span>
+      <h1 class="logo-text">Hilary's List</h1>
+      <span class="logo-subtitle">a coffee shop journal</span>
+      <div class="logo-section">...</div>
+  <app-user-selector></app-user-selector>
+ 
+    </div>
+  </header>
+
+  <!-- Body: Sidebar + Main Content -->
+  <div class="app-body">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar" *ngIf="sidebarOpen">
+      <nav class="sidebar-nav">
+
+        <a class="nav-item" routerLink="/hilarys-list" routerLinkActive="active">
+          <span class="nav-icon">☕</span>
+          <span class="nav-label">Hilary's List</span>
+          <span class="nav-badge">Public</span>
+        </a>
+
+        <a class="nav-item" routerLink="/profile" routerLinkActive="active">
+  <span class="nav-icon">👤</span>
+  <span class="nav-label">Profile</span>
+</a>
+
+        <a class="nav-item" routerLink="/my-cafes" routerLinkActive="active">
+          <span class="nav-icon">📋</span>
+          <span class="nav-label">My Cafés</span>
+        </a>
+
+        <a class="nav-item" routerLink="/my-reviews" routerLinkActive="active">
+          <span class="nav-icon">✍</span>
+          <span class="nav-label">My Reviews</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="add-cafe-btn" routerLink="/add-cafe">
+          + Add a Café
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+
+</div>
