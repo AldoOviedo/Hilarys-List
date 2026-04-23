@@ -1,1 +1,69 @@
-<p>add-cafe works!</p>
+<div class="form-container">
+  <span class="form-tag">New Entry</span>
+  <h2 class="form-title">Add a café</h2>
+  <p class="form-subtitle">Track a new spot you've visited.</p>
+
+  <div class="form-body">
+    <div class="form-group">
+      <label class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-input"
+        placeholder="Heart Coffee, Blue Bottle..."
+        [(ngModel)]="cafeName"
+      />
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">City</label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Portland"
+          [(ngModel)]="city"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">State</label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="OR"
+          [(ngModel)]="state"
+        />
+      </div>
+    </div>
+
+    @if (isHilary()) {
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            [(ngModel)]="isPublic"
+          />
+          <span class="checkbox-text">Also add to Hilary's public list</span>
+        </label>
+      </div>
+    }
+
+    @if (isHilary() && isPublic) {
+      <button
+        class="submit-btn"
+        (click)="onSubmit()"
+        [disabled]="!cafeName || !city || !state"
+      >
+        Add to My Cafés + Hilary's Public List
+      </button>
+    } @else {
+      <button
+        class="submit-btn"
+        (click)="onSubmit()"
+        [disabled]="!cafeName || !city || !state"
+      >
+        Add to My Cafés
+      </button>
+    }
+  </div>
+</div>
