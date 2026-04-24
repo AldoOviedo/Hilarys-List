@@ -1,1 +1,27 @@
-<p>my-cafes works!</p>
+<div class="view-container">
+  <div class="view-header">
+    <span class="view-tag">Private · Personal</span>
+    <h2 class="view-title">Your café journal</h2>
+    <p class="view-subtitle">Every café you've tracked, just for you.</p>
+  </div>
+
+  @if (cafes.length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon">📋</span>
+      <p class="empty-title">No cafés yet.</p>
+      <p class="empty-subtitle">Start adding the places you've visited.</p>
+    </div>
+  } @else {
+    <div class="cafe-grid">
+      @for (cafe of cafes; track cafe.id) {
+        <div class="cafe-card">
+          <h3 class="cafe-name">{{ cafe.name }}</h3>
+          <p class="cafe-location">{{ cafe.city }}, {{ cafe.state }}</p>
+          @if (cafe.isPublic) {
+            <span class="public-badge">On Hilary's List</span>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

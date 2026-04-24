@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HilarysList {
 
-  
+
   cafes: Cafe[] = [];
 
   constructor(

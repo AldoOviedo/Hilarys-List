@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { CafeService } from '../../services/cafe';
 import { AuthService } from '../../services/auth';
 import { User } from '../../models/user.model';
-import { Cafe } from '../../models/cafe.model';
 
 @Component({
   selector: 'app-add-cafe',
