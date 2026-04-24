@@ -12,7 +12,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 	
 	public List<Review> findByCafeId(Long cafeId);
 
-	@Query("Select r FROM Review WHERE r.cafe.user.id = :userId")
+	@Query("SELECT r FROM Review r WHERE r.cafe.user.id = :userId")
 	List<Review> findReviewsByUserId(@Param("userId")Long userId);
 
 }

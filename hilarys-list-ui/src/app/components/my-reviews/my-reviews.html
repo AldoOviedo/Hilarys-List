@@ -1,1 +1,19 @@
-<p>my-reviews works!</p>
+<div class="form-container">
+  <span class="form-tag">New Review</span>
+  <h2>Add Review</h2>
+  <p class="form-subtitle">Tell us what you think</p>
+
+  <div class="form-group">
+    <label class="form-label">Rating</label>
+    <select class="form-input" [(ngModel)]="rating">
+      <option [value]="null" disabled selected>Select a rating</option>
+      <option [value]="1">1 - Not great</option>
+      <option [value]="2">2 - Okay</option>
+      <option [value]="3">3 - Good</option>
+      <option [value]="4">4 - Great</option>
+      <option [value]="5">5 - Amazing</option>
+    </select>
+  </div>
+
+
+</div>
