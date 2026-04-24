@@ -51,4 +51,9 @@ public class ReviewController {
 		reviewService.deleteReview(reviewId);
 	}
 
+	@GetMapping("/user/{userId}")
+	public List<Review> getReviewsByUserId(@PathVariable Long userId){
+		return reviewService.getReviewsByUserId(userId);
+	}
+
 }

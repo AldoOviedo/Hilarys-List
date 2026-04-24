@@ -26,7 +26,7 @@ public class ReviewService {
 	
 	public Review createReview(Review review,Long cafeId) {
 	
-		Cafe cafe = cafeService.getCafeById(cafeId).orElseThrow(() -> new RuntimeException("Cafe not found with id: " + cafeId));;
+		Cafe cafe = cafeService.getCafeById(cafeId).orElseThrow(() -> new RuntimeException("Cafe not found with id: " + cafeId));
 		review.setCafe(cafe);
 
 		return reviewRepository.save(review);
@@ -46,6 +46,10 @@ public class ReviewService {
 	
 	public List<Review> getAllReviews(){
 		return reviewRepository.findAll();
+	}
+
+	public List<Review> getReviewsByUserId(Long userId){
+		return reviewRepository.findReviewsByUserId(userId);
 	}
 	
 	
