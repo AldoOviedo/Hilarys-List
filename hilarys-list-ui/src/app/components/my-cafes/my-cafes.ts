@@ -30,7 +30,7 @@ export class MyCafes {
           },
           error: (err: any) => {
             console.error('failed to load cafes: ', err);
-          }
+          } // testing commit after pull
         });
       }
       });
