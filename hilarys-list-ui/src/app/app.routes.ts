@@ -4,6 +4,7 @@ import { MyCafes } from './components/my-cafes/my-cafes';
 import { MyReviews } from './components/my-reviews/my-reviews';
 import { AddCafe } from './components/add-cafe/add-cafe';
 import { Profile } from './components/profile/profile';
+import { AddReview } from './components/add-review/add-review';
 
 
 export const routes: Routes = [
@@ -12,5 +13,6 @@ export const routes: Routes = [
   { path: 'my-cafes', component: MyCafes },
   { path: 'my-reviews', component: MyReviews },
   { path: 'add-cafe', component: AddCafe },
-  {path: 'profile', component: Profile}
+  { path: 'profile', component: Profile },
+  { path: 'add-review/:cafeId', component: AddReview },
 ];

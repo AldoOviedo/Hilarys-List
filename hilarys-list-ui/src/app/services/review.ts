@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Review} from '../models/review.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Review {
+export class ReviewService {
 
   private baseUrl: string = '/api/review';
 

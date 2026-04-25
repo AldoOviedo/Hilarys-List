@@ -3,10 +3,12 @@ import { User } from '../../models/user.model';
 import { Cafe } from '../../models/cafe.model';
 import { CafeService } from '../../services/cafe';
 import { AuthService } from '../../services/auth';
+import { RouterLink, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-my-cafes',
-  imports: [],
+  imports: [RouterLink,RouterModule, CommonModule],
   templateUrl: './my-cafes.html',
   styleUrl: './my-cafes.css',
 })

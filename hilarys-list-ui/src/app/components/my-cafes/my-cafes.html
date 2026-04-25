@@ -20,6 +20,7 @@
           @if (cafe.isPublic) {
             <span class="public-badge">On Hilary's List</span>
           }
+          <a class="review-btn" [routerLink]="['/add-review', cafe.id]">Write Review</a>
         </div>
       }
     </div>

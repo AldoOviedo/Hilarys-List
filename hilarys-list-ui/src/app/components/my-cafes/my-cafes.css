@@ -96,3 +96,20 @@
   color: #6B7A6B;
   margin: 0;
 }
+
+.review-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: rgba(77, 107, 74, 0.1);
+  color: #4D6B4A;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.review-btn:hover {
+  background: rgba(77, 107, 74, 0.2);
+}
