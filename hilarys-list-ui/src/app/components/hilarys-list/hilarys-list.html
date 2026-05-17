@@ -1,5 +1,3 @@
-
-
 <div class="view-container">
   <div class="view-header">
     <span class="view-tag">Public · Curated</span>
@@ -19,6 +17,26 @@
         <div class="cafe-card">
           <h3 class="cafe-name">{{ cafe.name }}</h3>
           <p class="cafe-location">{{ cafe.city }}, {{ cafe.state }}</p>
+
+          @if (getReview(cafe.id)) {
+            <div class="review-section">
+              @if (getReview(cafe.id)?.rating) {
+                <div class="rating">
+                  @for (star of [1,2,3,4,5]; track star) {
+                    <span class="star" [class.filled]="star <= getReview(cafe.id)!.rating!">★</span>
+                  }
+                </div>
+              }
+
+              @if (getReview(cafe.id)?.notes) {
+                <p class="review-notes">"{{ getReview(cafe.id)?.notes }}"</p>
+              }
+
+              @if (getReview(cafe.id)?.specialty) {
+                <span class="badge">{{ getReview(cafe.id)?.specialty }}</span>
+              }
+            </div>
+          }
         </div>
       }
     </div>

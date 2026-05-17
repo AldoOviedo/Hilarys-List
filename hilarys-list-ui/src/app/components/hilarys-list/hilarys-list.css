@@ -84,3 +84,42 @@
   color: #6B7A6B;
   margin: 0;
 }
+
+.review-section {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(77, 107, 74, 0.1);
+}
+
+.rating {
+  margin-bottom: 8px;
+}
+
+.star {
+  font-size: 16px;
+  color: #E0D5C3;
+}
+
+.star.filled {
+  color: #4D6B4A;
+}
+
+.review-notes {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: #2F4032;
+  line-height: 1.5;
+  margin: 0 0 8px 0;
+}
+
+.badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(77, 107, 74, 0.1);
+  color: #4D6B4A;
+  font-weight: 700;
+}
