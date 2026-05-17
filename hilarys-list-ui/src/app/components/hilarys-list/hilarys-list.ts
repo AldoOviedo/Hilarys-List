@@ -12,13 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hilarys-list.css',
 })
 export class HilarysList {
-
-
   cafes: Cafe[] = [];
 
   constructor(
     private cafeService: CafeService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -26,11 +24,7 @@ export class HilarysList {
       next: (data) => {
         this.cafes = data;
         this.cdr.detectChanges();
-        console.log('Cafes loaded:', this.cafes);
       },
-      error: (err) => {
-        console.error('Failed to load Hilarys list:', err);
-      }
     });
   }
 }

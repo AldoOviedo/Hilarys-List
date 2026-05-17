@@ -11,10 +11,9 @@ import { User } from '../../models/user.model';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './add-cafe.html',
-  styleUrl: './add-cafe.css'
+  styleUrl: './add-cafe.css',
 })
-export class AddCafe implements OnInit {
-
+export class AddCafe {
   currentUser: User | null = null;
 
   cafeName: string = '';
@@ -24,31 +23,26 @@ export class AddCafe implements OnInit {
 
   constructor(
     private cafeService: CafeService,
-    private authService: AuthService,
-    private router: Router
+    public authService: AuthService,
+    private router: Router,
   ) {}
 
-  ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-    });
-  }
-
   isHilary(): boolean {
-    return this.currentUser?.displayName === 'Hilary';
+    return this.authService.currentUser()?.displayName === 'Hilary';
   }
 
   onSubmit(): void {
-    if (!this.currentUser) return;
+    const user = this.authService.currentUser();
+    if (!user) return;
 
     const cafe: any = {
       name: this.cafeName,
       city: this.city,
       state: this.state,
-      isPublic: this.isPublic
+      isPublic: this.isPublic,
     };
 
-    this.cafeService.createCafe(this.currentUser.id, cafe).subscribe({
+    this.cafeService.createCafe(user.id, cafe).subscribe({
       next: (savedCafe) => {
         console.log('Cafe created:', savedCafe);
         if (this.isPublic) {
@@ -57,9 +51,6 @@ export class AddCafe implements OnInit {
           this.router.navigate(['/my-cafes']);
         }
       },
-      error: (err) => {
-        console.error('Failed to create cafe:', err);
-      }
     });
   }
 }

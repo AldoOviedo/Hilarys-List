@@ -1,19 +1,70 @@
-<div class="form-container">
-  <span class="form-tag">New Review</span>
-  <h2>Add Review</h2>
-  <p class="form-subtitle">Tell us what you think</p>
-
-  <div class="form-group">
-    <label class="form-label">Rating</label>
-    <select class="form-input">
-      <option [value]="null" disabled selected>Select a rating</option>
-      <option [value]="1">1 - Not great</option>
-      <option [value]="2">2 - Okay</option>
-      <option [value]="3">3 - Good</option>
-      <option [value]="4">4 - Great</option>
-      <option [value]="5">5 - Amazing</option>
-    </select>
+<div class="view-container">
+  <div class="view-header">
+    <span class="view-tag">Private · Your opinions</span>
+    <h2 class="view-title">Your reviews</h2>
+    <p class="view-subtitle">What you thought of the places you've been.</p>
   </div>
 
+  @if (reviews.length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon">✍</span>
+      <p class="empty-title">No reviews yet.</p>
+      <p class="empty-subtitle">Visit My Cafés and write a review for a place you've been.</p>
+    </div>
+  } @else {
+    <div class="review-grid">
+      @for (review of reviews; track review.id) {
+        <div class="review-card">
 
+          <div class="menu-container">
+            <button class="menu-trigger" (click)="toggleMenu(review.id)">⋮</button>
+
+            @if (activeMenuId === review.id) {
+              <div class="dropdown-menu">
+                <button class="dropdown-item delete-item" (click)="confirmDelete(review.id)">Delete Review</button>
+                <button class="dropdown-item close-item" (click)="toggleMenu(review.id)">✕</button>
+              </div>
+            }
+
+            @if (confirmDeleteId === review.id) {
+              <div class="confirm-box">
+                <p class="confirm-text">Are you sure?</p>
+                <div class="confirm-actions">
+                  <button class="confirm-yes" (click)="deleteReview(review.id)">Yes, delete</button>
+                  <button class="confirm-no" (click)="cancelDelete()">Cancel</button>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="review-header">
+            <h3 class="cafe-name">{{ review.cafe.name }}</h3>
+            <p class="cafe-location">{{ review.cafe.city }}, {{ review.cafe.state }}</p>
+          </div>
+
+          @if (review.rating) {
+            <div class="rating">
+              @for (star of [1,2,3,4,5]; track star) {
+                <span class="star" [class.filled]="star <= review.rating!">★</span>
+              }
+            </div>
+          }
+
+          @if (review.notes) {
+            <p class="review-notes">"{{ review.notes }}"</p>
+          }
+
+          <div class="review-badges">
+            @if (review.specialty) {
+              <span class="badge">{{ review.specialty }}</span>
+            }
+            @if (review.servesAlcohol) {
+              <span class="badge">Serves Alcohol</span>
+            }
+          </div>
+
+        </div>
+      }
+    </div>
+  }
 </div>

@@ -10,15 +10,11 @@ import { AuthService } from '../../services/auth';
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })
-export class Profile implements OnInit {
+export class Profile{
 
-  currentUser: User | null = null;
 
-  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-    });
-  }
+  constructor(public authService: AuthService) {}
+
+
 }

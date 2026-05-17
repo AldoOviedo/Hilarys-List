@@ -1,8 +1,8 @@
 <div class="profile-container">
-  @if (currentUser) {
+  @if (authService.currentUser()) {
     <span class="profile-tag">Profile</span>
-    <h2 class="profile-name">{{ currentUser.displayName }}</h2>
-    <p class="profile-detail">User ID: {{ currentUser.id }}</p>
+    <h2 class="profile-name">{{ authService.currentUser()?.displayName }}</h2>
+    <p class="profile-detail">User ID: {{ authService.currentUser()?.id }}</p>
   } @else {
     <p class="profile-empty">No user selected</p>
   }
