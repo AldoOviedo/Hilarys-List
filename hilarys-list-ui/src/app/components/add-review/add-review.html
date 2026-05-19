@@ -1,0 +1,57 @@
+<div class="form-container">
+  <span class="form-tag">New Review</span>
+
+  @if (cafe) {
+    <h2 class="form-title">Review {{ cafe.name }}</h2>
+    <p class="form-subtitle">{{ cafe.city }}, {{ cafe.state }}</p>
+  } @else {
+    <h2 class="form-title">Write a review</h2>
+  }
+
+  <div class="form-body">
+    <div class="form-group">
+      <label class="form-label">Rating</label>
+      <select class="form-input" [(ngModel)]="rating">
+        <option [value]="null" disabled selected>Select a rating</option>
+        <option [value]="1">1 - Not great</option>
+        <option [value]="2">2 - Okay</option>
+        <option [value]="3">3 - Good</option>
+        <option [value]="4">4 - Great</option>
+        <option [value]="5">5 - Amazing</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Notes</label>
+      <textarea
+        class="form-input form-textarea"
+        placeholder="What did you think? Best cortado in the city..."
+        [(ngModel)]="notes"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Specialty</label>
+      <select class="form-input" [(ngModel)]="specialty">
+        <option value="" disabled selected>What are they best at?</option>
+        <option value="Coffee">Coffee</option>
+        <option value="Matcha">Matcha</option>
+        <option value="Balanced">Balanced</option>
+      </select>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="servesAlcohol" />
+        <span class="checkbox-text">Serves alcoholic drinks</span>
+      </label>
+    </div>
+
+    <button
+      class="submit-btn"
+      (click)="onSubmit()"
+    >
+      Submit Review
+    </button>
+  </div>
+</div>
