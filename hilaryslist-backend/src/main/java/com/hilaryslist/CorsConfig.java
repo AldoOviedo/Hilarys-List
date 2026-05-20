@@ -19,7 +19,9 @@ public class CorsConfig {
                                 "https://hilarys-list.vercel.app/hilarys-list",
                                 "https://hilarys-list.vercel.app",
                                 "https://hilary.aldooviedo.com",
-                                "https://aldooviedo.com"
+                                "https://aldooviedo.com",
+                                "https://hilaryslist.com",
+                                "https://www.hilaryslist.com"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
