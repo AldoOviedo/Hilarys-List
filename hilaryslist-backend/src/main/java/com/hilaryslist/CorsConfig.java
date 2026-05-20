@@ -18,7 +18,8 @@ public class CorsConfig {
                                 "http://localhost:4200",
                                 "https://hilarys-list.vercel.app/hilarys-list",
                                 "https://hilarys-list.vercel.app",
-                                "https://hilary.aldooviedo.com"
+                                "https://hilary.aldooviedo.com",
+                                "https://aldooviedo.com"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
