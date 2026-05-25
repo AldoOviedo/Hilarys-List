@@ -1,0 +1,52 @@
+<div class="gate-container">
+  <div class="gate-card">
+    <span class="gate-hearts">♥ ♥</span>
+    <h1 class="gate-title">Hilary's List</h1>
+    <p class="gate-subtitle">create an account</p>
+
+    <div class="gate-form">
+      <input
+        type="text"
+        class="gate-input"
+        placeholder="Display Name"
+        [(ngModel)]="displayName"
+      />
+
+      <br>
+
+      <input
+        type="email"
+        class="gate-input"
+        placeholder="Email"
+        [(ngModel)]="email"
+      />
+
+      <br>
+
+      <input
+        type="password"
+        class="gate-input"
+        placeholder="Password"
+        [(ngModel)]="password"
+        (keyup.enter)="onSubmit()"
+      />
+      <br>
+
+      @if (error) {
+        <p class="gate-error">{{ error }}</p>
+      }
+
+      <button
+        class="gate-btn"
+        (click)="onSubmit()"
+        [disabled]="!displayName || !email || !password"
+      >
+        Create Account
+      </button>
+
+      <p class="gate-link">
+        Already have an account? <a routerLink="/login">Sign In</a>
+      </p>
+    </div>
+  </div>
+</div>
