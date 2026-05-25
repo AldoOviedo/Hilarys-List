@@ -1,8 +1,4 @@
 <div class="user-switcher">
-  <label class="user-label">Browsing as</label>
-  <select class="user-dropdown" [(ngModel)]="selectedUserId" (change)="onUserChange()">
-    @for (user of authService.users(); track user.id) {
-      <option [value]="user.id">{{ user.displayName }}</option>
-    }
-  </select>
+  <span class="user-label">{{ authService.currentUser()?.displayName }}</span>
+  <button class="logout-btn" (click)="logout()">Log Out</button>
 </div>

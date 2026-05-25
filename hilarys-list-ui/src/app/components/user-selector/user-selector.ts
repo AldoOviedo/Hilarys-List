@@ -14,24 +14,9 @@ import { toObservable } from '@angular/core/rxjs-interop';
   styleUrl: './user-selector.css',
 })
 export class UserSelector {
-  selectedUserId: number = 0;
+  constructor(public authService: AuthService) {}
 
-  constructor(
-    public authService: AuthService,
-    private cdr: ChangeDetectorRef,
-  ) {
-    toObservable(this.authService.currentUser).subscribe((user) => {
-      if (user) {
-        this.selectedUserId = user.id;
-        this.cdr.detectChanges();
-      }
-    });
-  }
-
-  onUserChange(): void {
-    const user = this.authService.users().find((u) => u.id == this.selectedUserId);
-    if (user) {
-      this.authService.setCurrentUser(user);
-    }
+  logout(): void {
+    this.authService.logout();
   }
 }

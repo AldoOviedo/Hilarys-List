@@ -7,9 +7,13 @@ import { Profile } from './components/profile/profile';
 import { AddReview } from './components/add-review/add-review';
 import { authGuard } from './components/password-gate/auth.guard';
 import { PasswordGate } from './components/password-gate/password-gate';
+import { Login } from './components/login/login';
+import { Register } from './components/register/register';
 
 
 export const routes: Routes = [
+  { path: 'login', component: Login },
+  { path: 'register', component: Register },
   { path: 'enter', component: PasswordGate },
   { path: '', redirectTo: 'hilarys-list', pathMatch: 'full' },
   { path: 'hilarys-list', component: HilarysList, canActivate: [authGuard] },

@@ -1,5 +1,6 @@
 package com.hilaryslist.controller;
 
+import com.hilaryslist.dto.UserDto;
 import com.hilaryslist.model.User;
 import com.hilaryslist.service.UserService;
 
@@ -31,16 +32,20 @@ public class UserController {
 		
 		
 	}
-	
-	
+
+
 	@GetMapping("/{userId}")
-	public Optional<User> getUserById(@PathVariable Long userId) {
-		return userService.getUserById(userId);
+	public UserDto getUserById(@PathVariable Long userId) {
+		User user = userService.getUserById(userId)
+				.orElseThrow(() -> new RuntimeException("User not found"));
+		return new UserDto(user.getId(), user.getDisplayName(), user.getEmail(), user.getRole());
 	}
-	
+
 	@GetMapping
-	public List<User> getAllUsers(){
-		return userService.getAllUsers();
+	public List<UserDto> getAllUsers() {
+		return userService.getAllUsers().stream()
+				.map(u -> new UserDto(u.getId(), u.getDisplayName(), u.getEmail(), u.getRole()))
+				.toList();
 	}
 
 }

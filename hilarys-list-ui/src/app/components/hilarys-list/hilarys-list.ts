@@ -13,6 +13,7 @@ import { AuthService } from '../../services/auth';
   imports: [CommonModule],
   templateUrl: './hilarys-list.html',
   styleUrl: './hilarys-list.css',
+  standalone: true,
 })
 export class HilarysList {
   cafes: Cafe[] = [];
@@ -26,14 +27,13 @@ export class HilarysList {
   ) {}
 
   ngOnInit(): void {
-    const hilaryUser = this.authService.users().find((u) => u.displayName === 'Hilary');
-
     this.cafeService.getHilarysList().subscribe({
       next: (cafes) => {
         this.cafes = cafes;
 
-        if (hilaryUser) {
-          this.reviewService.getReviewsByUserId(hilaryUser.id).subscribe({
+        if (cafes.length > 0) {
+          const hilaryId = cafes[0].user.id;
+          this.reviewService.getReviewsByUserId(hilaryId).subscribe({
             next: (reviews) => {
               this.reviewMap = new Map();
               reviews.forEach((review) => {

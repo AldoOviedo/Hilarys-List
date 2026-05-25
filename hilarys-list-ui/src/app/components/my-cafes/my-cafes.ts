@@ -15,6 +15,7 @@ import { forkJoin } from 'rxjs';
   imports: [RouterLink, RouterModule, CommonModule],
   templateUrl: './my-cafes.html',
   styleUrl: './my-cafes.css',
+  standalone: true,
 })
 export class MyCafes {
   cafes: Cafe[] = [];

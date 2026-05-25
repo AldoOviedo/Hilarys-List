@@ -1,43 +1,97 @@
-import { Injectable, NgZone, signal } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { User } from '../models/user.model';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { User } from '../models/user.model';
 import { UserService } from './user';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   currentUser = signal<User | null>(null);
-  users = signal<User[]>([]);
 
-  constructor(private userService: UserService) {
-    this.loadUsers();
+  private tokenKey = 'hilaryListToken';
+
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+
+  ) {
+    if (this.isLoggedIn()) {
+      this.loadCurrentUser();
+    }
   }
 
-  private loadUsers(): void {
-    this.userService.getAllUsers().subscribe({
-      next: (users) => {
-        this.users.set(users);
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/api/auth/login`, { email, password }).pipe(
+      tap((response) => {
+        localStorage.setItem(this.tokenKey, response.token);
+        this.loadCurrentUser();
+      }),
+    );
+  }
 
-        const savedId = localStorage.getItem('selectedUserId');
-        let defaultUser: User | undefined;
-
-        if (savedId) {
-          defaultUser = users.find((u) => u.id === Number(savedId));
-        }
-
-        if (!defaultUser) {
-          defaultUser = users.find((u) => u.displayName === 'Hilary') || users[0];
-        }
-
-        this.currentUser.set(defaultUser);
-      },
+  register(displayName: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/api/auth/register`, {
+      displayName,
+      email,
+      password,
     });
   }
+
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
+    this.currentUser.set(null);
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  getEmailFromToken(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.sub;
+    } catch {
+      return null;
+    }
+  }
+
+  getRolesFromToken(): string[] {
+    const token = this.getToken();
+    if (!token) return [];
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.roles || [];
+    } catch {
+      return [];
+    }
+  }
+
+  isAdmin(): boolean {
+    return this.getRolesFromToken().includes('ROLE_ADMIN');
+  }
+
 
   setCurrentUser(user: User): void {
     localStorage.setItem('selectedUserId', String(user.id));
     this.currentUser.set(user);
+  }
+
+  loadCurrentUser(): void {
+    this.http.get<User>(`${environment.apiUrl}/api/auth/me`).subscribe({
+      next: (user) => {
+        this.currentUser.set(user);
+      },
+    });
   }
 }
