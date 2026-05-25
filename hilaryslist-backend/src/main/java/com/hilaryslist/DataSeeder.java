@@ -36,14 +36,12 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        reviewRepository.deleteAll();
-        cafeRepository.deleteAll();
-        userRepository.deleteAll();
-
-        userRepository.save(new User("Hilary", "hilarylathrop@gmail.com",
-                passwordEncoder.encode(hilaryPassword), Role.ADMIN));
-        userRepository.save(new User("Aldo", "aldooviedo98@gmail.com",
-                passwordEncoder.encode(aldoPassword), Role.ADMIN));
-        System.out.println("Seed data recreated: Hilary and Aldo");
+        if (userRepository.count() == 0) {
+            userRepository.save(new User("Hilary", "hilarylathrop@gmail.com",
+                    passwordEncoder.encode(hilaryPassword), Role.ADMIN));
+            userRepository.save(new User("Aldo", "aldooviedo98@gmail.com",
+                    passwordEncoder.encode(aldoPassword), Role.ADMIN));
+            System.out.println("Seed data created: Hilary and Aldo");
+        }
     }
 }
