@@ -2,8 +2,29 @@
   @if (authService.currentUser()) {
     <span class="profile-tag">Profile</span>
     <h2 class="profile-name">{{ authService.currentUser()?.displayName }}</h2>
-    <p class="profile-detail">User ID: {{ authService.currentUser()?.id }}</p>
+    <p class="profile-email">{{ authService.currentUser()?.email }}</p>
+
+    @if (authService.isAdmin()) {
+      <span class="role-badge admin">Admin</span>
+    } @else {
+      <span class="role-badge user">Member</span>
+    }
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">{{ cafeCount }}</span>
+        <span class="stat-label">Cafés Tracked</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ reviewCount }}</span>
+        <span class="stat-label">Reviews Written</span>
+      </div>
+    </div>
+
+    <div class="profile-actions">
+      <button class="logout-btn" (click)="authService.logout()">Log Out</button>
+    </div>
   } @else {
-    <p class="profile-empty">No user selected</p>
+    <p class="profile-empty">Loading profile...</p>
   }
 </div>
