@@ -36,6 +36,13 @@
       </div>
     </div>
 
+    <div class="form-group checkbox-group">
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="hasVisited" />
+        <span class="checkbox-text">I've already visited this place</span>
+      </label>
+    </div>
+
     @if (isHilary()) {
       <div class="form-group checkbox-group">
         <label class="checkbox-label">
@@ -56,13 +63,21 @@
       >
         Add to My Cafés + Hilary's Public List
       </button>
-    } @else {
+    } @else if (hasVisited) {
       <button
         class="submit-btn"
         (click)="onSubmit()"
         [disabled]="!cafeName || !city || !state"
       >
         Add to My Cafés
+      </button>
+    } @else if (!hasVisited) {
+      <button
+        class="submit-btn"
+        (click)="onSubmit()"
+        [disabled]="!cafeName || !city || !state"
+      >
+        Add to My Wishlist
       </button>
     }
   </div>
