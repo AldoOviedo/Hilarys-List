@@ -50,4 +50,19 @@ public class CafeService {
 		cafeRepository.deleteById(cafeId);
 	}
 
+	public List<Cafe> GetVistedCafesByUserId(Long userId) {
+		return cafeRepository.findByUserIdAndHasVisitedTrue(userId);
+	}
+
+	public List<Cafe> GetWantToVisitCafesByUSerId(Long userId) {
+		return cafeRepository.findByUserIdAndHasVisitedFalse(userId);
+	}
+
+	public Cafe markAsVisited(Long cafeId) {
+		Cafe cafe = cafeRepository.findById(cafeId)
+				.orElseThrow(() -> new RuntimeException("Cafe not found with id: " + cafeId));
+		cafe.setHasVisited(true);
+		return cafeRepository.save(cafe);
+	}
+
 }

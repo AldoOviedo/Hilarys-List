@@ -32,4 +32,9 @@ export class CafeService {
   deleteCafe(cafeId: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${cafeId}`);
   }
+
+
+  getWishlist(userId: number): Observable<Cafe[]> {
+    return this.http.get<Cafe[]>(`${this.baseUrl}/user/${userId}/wishlist`);
+  }
 }

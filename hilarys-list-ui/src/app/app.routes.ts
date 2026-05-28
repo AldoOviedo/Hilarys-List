@@ -9,6 +9,7 @@ import { authGuard } from './components/password-gate/auth.guard';
 import { PasswordGate } from './components/password-gate/password-gate';
 import { Login } from './components/login/login';
 import { Register } from './components/register/register';
+import { Wishlist } from './components/wishlist/wishlist';
 
 
 export const routes: Routes = [
@@ -22,4 +23,5 @@ export const routes: Routes = [
   { path: 'add-cafe', component: AddCafe, canActivate: [authGuard] },
   { path: 'add-review/:cafeId', component: AddReview, canActivate: [authGuard] },
   { path: 'profile', component: Profile, canActivate: [authGuard] },
+  {path: 'wishlist', component: Wishlist, canActivate: [authGuard]}
 ];

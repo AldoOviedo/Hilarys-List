@@ -6,6 +6,7 @@ export interface Cafe {
     city: string;
     state: string;
     isPublic: Boolean;
+    hasVisted: Boolean;
     addedAt: string;
     user: User;
 }

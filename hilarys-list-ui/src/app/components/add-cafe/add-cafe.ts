@@ -20,6 +20,7 @@ export class AddCafe {
   city: string = '';
   state: string = '';
   isPublic: boolean = false;
+  hasVisited: boolean = false;
 
   constructor(
     private cafeService: CafeService,
@@ -40,6 +41,7 @@ export class AddCafe {
       city: this.city,
       state: this.state,
       isPublic: this.isPublic,
+      hasVisited: this.hasVisited
     };
 
     this.cafeService.createCafe(user.id, cafe).subscribe({

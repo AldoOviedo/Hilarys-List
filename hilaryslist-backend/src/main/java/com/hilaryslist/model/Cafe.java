@@ -41,6 +41,9 @@ public class Cafe {
 	private String state;
 	
 	private Boolean isPublic = false;
+
+	@Column(nullable = false, columnDefinition = "boolean default true")
+	private boolean hasVisited = true;
 	
 	private LocalDate addedAt;
 	
@@ -49,14 +52,11 @@ public class Cafe {
 	private User user;
 
 	
-	
-
-
 	public Cafe(
 			@NotBlank(message = "Cafe is required") @Size(min = 3, max = 100, message = "Cafe must be between 3 and 100 characters") String name,
 			@NotBlank(message = "City is required") @Size(min = 3, max = 100, message = "City must be between 3 and 100 characters") String city,
 			@NotBlank(message = "State is required") @Size(min = 2, max = 100, message = "State must be between 2 and 100 characters") String state,
-			Boolean isPublic, LocalDate addedAt, User user) {
+			Boolean isPublic, Boolean hasVisited, LocalDate addedAt, User user) {
 		super();
 		this.name = name;
 		this.city = city;
@@ -64,6 +64,7 @@ public class Cafe {
 		this.isPublic = isPublic;
 		this.addedAt = addedAt;
 		this.user = user;
+		this.hasVisited = hasVisited;
 	}
 
 	public Cafe() {
@@ -130,6 +131,9 @@ public class Cafe {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public boolean isHasVisited() { return hasVisited; }
+	public void setHasVisited(boolean hasVisited) { this.hasVisited = hasVisited; }
 	
 	
 	
