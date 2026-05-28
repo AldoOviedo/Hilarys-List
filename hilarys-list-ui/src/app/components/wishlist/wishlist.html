@@ -1,0 +1,26 @@
+<div class="view-container">
+  <div class="view-header">
+    <span class="view-tag">Private · Personal</span>
+    <h2 class="view-title">Your café wishlist</h2>
+    <p class="view-subtitle">Life is too short to not go have a good coffee, go out there and explore the world, one cup at a time</p>
+  </div>
+
+@if (cafes.length === 0) {
+  <div class="empty-state">
+    <span class="empty-icon">📋</span>
+    <p class="empty-title">No wishlist cafés yet.</p>
+    <p class="empty-subtitle">Start adding the places you've visited.</p>
+  </div>
+} @else {
+  <div class="cafe-grid">
+    @for (cafe of cafes; track cafe.id) {
+      <div class="cafe-card">
+        <h3 class="cafe-name">{{ cafe.name }}</h3>
+        <p class="cafe-location">{{ cafe.city }}, {{ cafe.state }}</p>
+
+      </div>
+
+}
+  </div>
+}
+</div>
