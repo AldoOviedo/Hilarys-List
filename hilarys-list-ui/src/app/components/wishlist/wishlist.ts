@@ -13,7 +13,6 @@ import { Observable } from 'rxjs';
   standalone: true,
 })
 export class Wishlist {
-  wishlistCafes = signal([]);
   cafes: Cafe[] = [];
 
   constructor(

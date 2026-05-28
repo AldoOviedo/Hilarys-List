@@ -27,3 +27,19 @@
   border-color: #c0392b;
   color: #c0392b;
 }
+
+@media (max-width: 768px) {
+  .user-switcher {
+    gap: 8px;
+  }
+
+  .user-label {
+    font-size: 10px;
+    display: none;
+  }
+
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
